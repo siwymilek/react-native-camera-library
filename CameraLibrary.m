@@ -107,8 +107,8 @@ RCT_EXPORT_METHOD(getPhotos:(NSDictionary *)props callback:(RCTResponseSenderBlo
                      NSData *data = UIImagePNGRepresentation([self imageWithImage:thumb scaledToSize:CGSizeMake(40, 40)]);
                      NSString *base = [data base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
                      
-                     if(base) {;
-                         [item setValue:[(AVURLAsset *)result URL] forKey:@"url"];
+                     if(base) {
+                         [item setValue:[NSString stringWithFormat:@"%@", [(AVURLAsset *)result URL]] forKey:@"url"];
                          [item setValue:base forKey:@"thumbnail"];
                          [item setValue:@"video" forKey:@"type"];
                          
