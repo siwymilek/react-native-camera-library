@@ -1,0 +1,27 @@
+{
+  "name": "react-native-camera-library",
+  "description": "React native library which provides access to camera roll",
+  "author": {
+    "name": "Piotr Miloszewicz",
+    "email": "pmiloszewicz@gmail.com",
+    "web": "http://vikingmedia.pl"
+  },
+  "version": "0.0.1",
+  "keywords": [
+    "react-native"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/siwymilek/react-native-camera-library.git"
+  },
+  "engines": {
+    "node": ">=0.6.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  ]
+}
+
