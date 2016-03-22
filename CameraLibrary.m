@@ -16,6 +16,9 @@ RCT_EXPORT_METHOD(getPhotos:(NSDictionary *)props callback:(RCTResponseSenderBlo
     PHFetchResult *allPhotosResult = [PHAsset fetchAssetsWithOptions:options];
     NSMutableArray *collection = [NSMutableArray array];
 
+    PHImageRequestOptions *requestOptionForPhotos = [[PHImageRequestOptions alloc] init];
+    requestOptionForPhotos.synchronous = YES;
+
     BOOL nextPage = YES;
 
     int countObjects = (int)[allPhotosResult count];
@@ -52,7 +55,7 @@ RCT_EXPORT_METHOD(getPhotos:(NSDictionary *)props callback:(RCTResponseSenderBlo
              requestImageForAsset:asset
              targetSize:CGSizeMake(80, 80)
              contentMode:PHImageContentModeAspectFill
-             options:nil
+             options:requestOptionForPhotos
              resultHandler:^(UIImage *result, NSDictionary *info) {
 
                  NSData *data = UIImagePNGRepresentation(result);
