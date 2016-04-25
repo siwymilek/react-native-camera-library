@@ -4,7 +4,9 @@
  */
 'use strict';
 
-var NativeCameraLibrary = require('NativeModules').CameraLibrary;
+const React = require('react-native')
+const {NativeModules} = React;
+const NativeCameraLibrary = NativeModules.CameraLibrary;
 
 /**
  * High-level docs for the CameraLibrary iOS API can be written here.
