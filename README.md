@@ -35,8 +35,8 @@ A function which includes a parameter containing the following response:
 ```js
 { 
 	next_page: 0, // boolean representing if next_page is available
-	current_page: 1, // current page index
-	last_page: 288, // the last available page
+	current_page: 1, // current page index (starting at 1)
+	last_page: 288, // the last available page index (starting at 1)
 	objects: [
 		type: "photo", // photo or video
 		thumbnail: "xKdfk382SD...", // base64 encoded image
