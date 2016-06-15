@@ -32,17 +32,17 @@ RCT_EXPORT_METHOD(getPhotos:(NSDictionary *)props callback:(RCTResponseSenderBlo
 
     int perPage = 20;
     if ([props objectForKey:@"perPage"] != nil) {
-        int perPage = [[props valueForKey:@"perPage"] intValue];
+        perPage = [[props valueForKey:@"perPage"] intValue];
     }
     
     int thumbnailWidth = 80;
     if ([props objectForKey:@"thumbnailWidth"] != nil) {
-        int perPage = [[props valueForKey:@"thumbnailWidth"] intValue];
+        thumbnailWidth = [[props valueForKey:@"thumbnailWidth"] intValue];
     }
     
     int thumbnailHeight = 80;
     if ([props objectForKey:@"thumbnailHeight"] != nil) {
-        int perPage = [[props valueForKey:@"thumbnailHeight"] intValue];
+        thumbnailHeight = [[props valueForKey:@"thumbnailHeight"] intValue];
     }
     
     int page = [[props valueForKey:@"page"] intValue];
