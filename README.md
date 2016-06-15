@@ -22,17 +22,13 @@ by following the [libraries linking instructions](https://facebook.github.io/rea
 
 ### API
 
-#### getPhotos
+#### getPhotos(fetchParams, callback)
 
-```js
-CameraLibrary.getPhotos(fetchParams, callback)
-```
-
-`fetchParams`
+**fetchParams**
 
 An object containing parameters for fetching, currently supports `page`. Ex: `{ page: 1 }`
 
-`callback`
+**callback**
 
 A function which includes a parameter containing the following response:
 
@@ -47,7 +43,7 @@ A function which includes a parameter containing the following response:
 		url: "asset-library://...", // full path to asset
 	]
 } 
-
+```
 
 
 ### Simple example
