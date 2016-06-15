@@ -75,9 +75,13 @@ RCT_EXPORT_METHOD(getPhotos:(NSDictionary *)props callback:(RCTResponseSenderBlo
                  if(base != nil) {
                      NSString *filename = [asset.localIdentifier substringWithRange:NSMakeRange(0, 36)];
                      NSString *url = [NSString stringWithFormat:@"assets-library://asset/asset.JPG?id=%@&ext=JPG", filename];
+                     NSInteger width = asset.pixelWidth;
+                     NSUInteger height = asset.pixelHeight;
 
                      [item setValue:url forKey:@"url"];
                      [item setValue:base forKey:@"thumbnail"];
+                     [item setValue:[NSNumber numberWithInt:width] forKey:@"width"];
+                     [item setValue:[NSNumber numberWithInt:height] forKey:@"height"];
                      [item setValue:@"photo" forKey:@"type"];
 
                      fetched = YES;
@@ -114,8 +118,12 @@ RCT_EXPORT_METHOD(getPhotos:(NSDictionary *)props callback:(RCTResponseSenderBlo
                          NSString *filename = [asset.localIdentifier substringWithRange:NSMakeRange(0, 36)];
                          NSString *url = [NSString stringWithFormat:@"assets-library://asset/asset.MOV?id=%@&ext=MOV", filename];
 
+                         NSInteger width = asset.pixelWidth;
+                         NSUInteger height = asset.pixelHeight;
                          [item setValue:[NSString stringWithFormat:@"%@", url] forKey:@"url"];
                          [item setValue:base forKey:@"thumbnail"];
+                         [item setValue:[NSNumber numberWithInt:width] forKey:@"width"];
+                         [item setValue:[NSNumber numberWithInt:height] forKey:@"height"];
                          [item setValue:@"video" forKey:@"type"];
 
                          fetched = YES;
