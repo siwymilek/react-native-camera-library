@@ -31,6 +31,20 @@ RCT_EXPORT_METHOD(getPhotos:(NSDictionary *)props callback:(RCTResponseSenderBlo
     int countObjects = (int)[allPhotosResult count];
 
     int perPage = 20;
+    if ([props objectForKey:@"perPage"] != nil) {
+        int perPage = [[props valueForKey:@"perPage"] intValue];
+    }
+    
+    int thumbnailWidth = 80;
+    if ([props objectForKey:@"thumbnailWidth"] != nil) {
+        int perPage = [[props valueForKey:@"thumbnailWidth"] intValue];
+    }
+    
+    int thumbnailHeight = 80;
+    if ([props objectForKey:@"thumbnailHeight"] != nil) {
+        int perPage = [[props valueForKey:@"thumbnailHeight"] intValue];
+    }
+    
     int page = [[props valueForKey:@"page"] intValue];
     int lastPage = ceil(countObjects/perPage);
 
@@ -64,7 +78,7 @@ RCT_EXPORT_METHOD(getPhotos:(NSDictionary *)props callback:(RCTResponseSenderBlo
 
             [[PHImageManager defaultManager]
              requestImageForAsset:asset
-             targetSize:CGSizeMake(80, 80)
+             targetSize:CGSizeMake(thumbnailWidth, thumbnailHeight)
              contentMode:PHImageContentModeAspectFill
              options:requestOptionForPhotos
              resultHandler:^(UIImage *result, NSDictionary *info) {
@@ -83,6 +97,7 @@ RCT_EXPORT_METHOD(getPhotos:(NSDictionary *)props callback:(RCTResponseSenderBlo
                      [item setValue:[NSNumber numberWithInt:width] forKey:@"width"];
                      [item setValue:[NSNumber numberWithInt:height] forKey:@"height"];
                      [item setValue:@"photo" forKey:@"type"];
+                     
 
                      fetched = YES;
 
@@ -109,8 +124,8 @@ RCT_EXPORT_METHOD(getPhotos:(NSDictionary *)props callback:(RCTResponseSenderBlo
                      CGImageRef image = [gen copyCGImageAtTime:time actualTime:&actualTime error:&error];
                      UIImage *thumb = [[UIImage alloc] initWithCGImage:image];
                      CGImageRelease(image);
-
-                     NSData *data = UIImagePNGRepresentation([self imageWithImage:thumb scaledToSize:CGSizeMake(40, 40)]);
+                     
+                     NSData *data = UIImagePNGRepresentation([self imageWithImage:thumb scaledToSize:CGSizeMake(thumbnailWidth, thumbnailHeight)]);
                      NSString *base = [data base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
 
                      if(base) {
