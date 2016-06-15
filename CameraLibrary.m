@@ -104,6 +104,7 @@ RCT_EXPORT_METHOD(getPhotos:(NSDictionary *)props callback:(RCTResponseSenderBlo
 
                      CGImageRef image = [gen copyCGImageAtTime:time actualTime:&actualTime error:&error];
                      UIImage *thumb = [[UIImage alloc] initWithCGImage:image];
+                     CGImageRelease(image);
 
                      NSData *data = UIImagePNGRepresentation([self imageWithImage:thumb scaledToSize:CGSizeMake(40, 40)]);
                      NSString *base = [data base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
