@@ -113,9 +113,11 @@ RCT_EXPORT_METHOD(getPhotos:(NSDictionary *)props callback:(RCTResponseSenderBlo
 //                         [item setValue:[NSString stringWithFormat:@"%@", [(AVURLAsset *)result URL]] forKey:@"url"];
                          NSString *filename = [asset.localIdentifier substringWithRange:NSMakeRange(0, 36)];
                          NSString *url = [NSString stringWithFormat:@"assets-library://asset/asset.MOV?id=%@&ext=MOV", filename];
-
+                         NSInteger duration = asset.duration;
+                         
                          [item setValue:[NSString stringWithFormat:@"%@", url] forKey:@"url"];
                          [item setValue:base forKey:@"thumbnail"];
+                         [item setValue:[NSNumber numberWithInt:duration] forKey:@"duration"];
                          [item setValue:@"video" forKey:@"type"];
 
                          fetched = YES;
